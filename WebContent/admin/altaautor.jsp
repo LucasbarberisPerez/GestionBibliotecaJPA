@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:directive.include file="/resources/include/includefile.jspf"/>
 <title>Insertar autor</title>
 	<link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css">
 </head>
 <body>
 	
-   	<jsp:directive.include file="/resources/include/menu.jspf"/> <br>
+
    	<br>
    	
    	<div class="form-autor">

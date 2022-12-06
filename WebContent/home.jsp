@@ -28,7 +28,7 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/home.jsp">Home</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -95,6 +95,25 @@
   </header>
   <main>
         <!-- Aquí irá el login de la web cuando esté acabada.-->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h1>Biblioteca Municipal</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <img src="${pageContext.request.contextPath}/resources/img/bg.jpg"  class="img-fluid">
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-12">
+              <p>Bienvenid@ a la biblioteca municipal, aqui podrá solicitar libros a la carta, tenemos un sistema que penaliza cuando una devolución no es efectuada en la fecha recibida, disfruta de los libros pero no olvide devolverlos.</p>
+            </div>
+          </div>
+        </div>
   </main>
   <footer>
 
