@@ -7,29 +7,18 @@ import entities.Autor;
 import tools.BddJPADao;
 
 public class AutorDao {
-	private Autor autor;
 
-	public AutorDao() {
+	public static void insertarAutor(Autor a) {
 
-	}
-
-	public AutorDao(Autor a) {
-		this.autor = a;
-	}
-
-	public void insertAutor() {
-		if (this.autor != null) {
-			
+		if (a != null) {
 			EntityManager em = BddJPADao.getEntityManager();
 			EntityTransaction tx = em.getTransaction();
 			tx.begin();
-			em.persist(this.autor);
+			em.persist(a);
 			tx.commit();
+			System.out.println("Autor insertado.");
 		}
-	}
 
-	public void setAutor(Autor a) {
-		this.autor = a;
 	}
 
 }

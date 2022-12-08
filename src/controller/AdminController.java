@@ -19,13 +19,13 @@ import entities.Socio;
  * Servlet implementation class Controller
  */
 @WebServlet("/Controller")
-public class Controller extends HttpServlet {
+public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Controller() {
+	public AdminController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -36,8 +36,6 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,26 +47,24 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String action = request.getParameter("param");
+		String accion = request.getParameter("accion");
 
-		if (action != null) {
+		if (accion != null) {
 
-			switch (action) {
-			
-			
-			case "insertarAutor": 
-				//insertar autor, el nombre del input tiene que ser nombre-autor
+			switch (accion) {
+
+			case "insertarAutor":
+				// insertar autor, el nombre del input tiene que ser nombre-autor
 				String nombre = (String) request.getAttribute("nombre-autor");
 				LocalDate ld = LocalDate.now();
 				Autor a = new Autor();
 				a.setFechanacimiento(java.sql.Date.valueOf(ld));
 				a.setNombre(nombre);
-				AutorDao adao = new AutorDao();
-				adao.insertAutor();
-				
+
+				AutorDao.insertarAutor(a);
+
 				break;
-			
-			
+
 			case "insertarSocio":
 				break;
 			case "listarSocio":

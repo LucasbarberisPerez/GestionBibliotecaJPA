@@ -18,7 +18,7 @@ public class MainTesting {
 		
 		AutorDao adao = new AutorDao(a);
 		
-		adao.insertAutor();
+		adao.insertarAutor();
 		System.out.println();
 		
 		
