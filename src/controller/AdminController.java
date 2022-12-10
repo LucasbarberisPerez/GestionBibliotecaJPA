@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,11 +15,12 @@ import dao.AutorDao;
 import dao.SocioDao;
 import entities.Autor;
 import entities.Socio;
+import tools.Formateo;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/Controller")
+@WebServlet("/AdminController")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,22 +49,28 @@ public class AdminController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String accion = request.getParameter("accion");
+		String operacion = request.getParameter("operacion");
+		System.out.println(operacion);
+		boolean exito = false;
 
-		if (accion != null) {
+		if (operacion != null) {
 
-			switch (accion) {
+			switch (operacion) {
 
 			case "insertarAutor":
-				// insertar autor, el nombre del input tiene que ser nombre-autor
-				String nombre = (String) request.getAttribute("nombre-autor");
-				LocalDate ld = LocalDate.now();
-				Autor a = new Autor();
-				a.setFechanacimiento(java.sql.Date.valueOf(ld));
-				a.setNombre(nombre);
-
-				AutorDao.insertarAutor(a);
-
+				// Working
+				String nombre = (String) request.getParameter("nombre-autor");
+				String fechaNac = (String) request.getParameter("fecha-nac-autor");
+				
+				if (nombre != null && fechaNac != null) {
+					Autor a = new Autor();
+					a.setFechanacimiento(Formateo.formatoSqlDate(fechaNac));
+					a.setNombre(Formateo.toMayuscula(nombre));
+					AutorDao.insertarAutor(a);
+					exito = true;
+				}
+				
+				request.getRequestDispatcher("/admin/altaautor.jsp").forward(request, response);
 				break;
 
 			case "insertarSocio":

@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import entities.Socio;
-import tools.BddJPADao;
+import tools.ConexionJPA;
 
 public class SocioDao {
 
@@ -22,7 +22,7 @@ public class SocioDao {
 	}
 
 	public void insertarSocio() {
-		EntityManager em = BddJPADao.getEntityManager();
+		EntityManager em = ConexionJPA.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.persist(s);
@@ -34,7 +34,7 @@ public class SocioDao {
 	}
 
 	public List<Socio> getSociosPorNombre(String socio) {
-		EntityManager em = tools.BddJPADao.getEntityManager();
+		EntityManager em = tools.ConexionJPA.getEntityManager();
 		TypedQuery<Socio> consulta = (TypedQuery<Socio>) em.createNamedQuery("Socio.sociosPorNombre", Socio.class);
 		List<Socio> listaSociosPorNombre = consulta.getResultList();
 		return listaSociosPorNombre;
@@ -42,7 +42,7 @@ public class SocioDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Socio> getListaSocios(){
-		EntityManager em = tools.BddJPADao.getEntityManager();
+		EntityManager em = tools.ConexionJPA.getEntityManager();
 		TypedQuery<Socio> consulta = (TypedQuery<Socio>)em.createNamedQuery("Socio.findAll");
 		List<Socio> listaSocios = consulta.getResultList();
 		

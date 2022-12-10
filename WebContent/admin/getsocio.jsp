@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:directive.include file="/resources/include/includefile.jspf"/>
 <title>Insert title here</title>
 <link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css">
 </head>
 <body>
-	<jsp:directive.include file="/resources/include/menu.jspf"/> <br>
-   	<br>
    	
    	<div class="form-mod-socio" action="/controller?operation=buscar">
 	   	<form action="">
