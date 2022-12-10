@@ -1,16 +1,12 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import dao.AutorDao;
 import dao.SocioDao;
 import entities.Autor;
@@ -51,7 +47,7 @@ public class AdminController extends HttpServlet {
 		doGet(request, response);
 		String operacion = request.getParameter("operacion");
 		System.out.println(operacion);
-		boolean exito = false;
+		String mensaje = null;
 
 		if (operacion != null) {
 
@@ -59,17 +55,23 @@ public class AdminController extends HttpServlet {
 
 			case "insertarAutor":
 				// Working
-				String nombre = (String) request.getParameter("nombre-autor");
-				String fechaNac = (String) request.getParameter("fecha-nac-autor");
-				
-				if (nombre != null && fechaNac != null) {
+				try {
+					String nombre = (String) request.getParameter("nombre-autor");
+					String fechaNac = (String) request.getParameter("fecha-nac-autor");
+
 					Autor a = new Autor();
 					a.setFechanacimiento(Formateo.formatoSqlDate(fechaNac));
 					a.setNombre(Formateo.toMayuscula(nombre));
 					AutorDao.insertarAutor(a);
-					exito = true;
+
+					mensaje = "El autor o la autora ha sido insertad@ con exito.";
+					request.setAttribute("mensajeExito", mensaje);
+
+				} catch (Exception e) {
+					mensaje = "Error al insertar el autor.";
+					request.setAttribute("mensajeError", mensaje);
 				}
-				
+
 				request.getRequestDispatcher("/admin/altaautor.jsp").forward(request, response);
 				break;
 

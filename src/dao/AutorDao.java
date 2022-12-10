@@ -16,7 +16,7 @@ public class AutorDao {
 			tx.begin();
 			em.persist(a);
 			tx.commit();
-			System.out.println("Autor insertado.");
+			
 		}
 
 	}
