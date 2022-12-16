@@ -1,8 +1,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.sql.Date;
+
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -17,10 +18,8 @@ public class Prestamo implements Serializable {
 	@Id
 	private long idejemplar;
 
-	@Temporal(TemporalType.DATE)
 	private Date fechalimitedevolucion;
-
-	@Temporal(TemporalType.DATE)
+	
 	private Date fechaprestamo;
 
 	//bi-directional one-to-one association to Ejemplar

@@ -89,4 +89,12 @@ public class Ejemplar implements Serializable {
 		this.prestamo = prestamo;
 	}
 
+	@Override
+	public String toString() {
+		return "Ejemplar [idejemplar=" + idejemplar + ", baja=" + baja + ", devoluciones=" + devoluciones + ", libro="
+				+ libro + ", prestamo=" + prestamo + "]";
+	}
+	
+	
+
 }

@@ -21,7 +21,7 @@ public class AutorDao {
 		}
 	}
 
-	public static ArrayList<Autor> getListaAutores() {
+	public static ArrayList<Autor> obtenerListaAutores() {
 		EntityManager em = ConexionJPA.getEntityManager();
 		List<Autor> lista = em.createNamedQuery("Autor.findAll", Autor.class).getResultList();
 		ArrayList<Autor> listaAutores = new ArrayList<Autor>(lista);

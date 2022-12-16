@@ -22,7 +22,7 @@ public class OperacionesAdministrador {
 			case "listarAutores":
 				System.out.println("Aquí entra bro");
 				// Listamos los autores con la funcion especificada en la entidad autor.
-				ArrayList<Autor> listaAutores = AutorDao.getListaAutores();
+				ArrayList<Autor> listaAutores = AutorDao.obtenerListaAutores();
 				request.setAttribute("listaAutores", listaAutores);
 				request.getRequestDispatcher("/admin/listaautores.jsp").forward(request, response);
 				break;
