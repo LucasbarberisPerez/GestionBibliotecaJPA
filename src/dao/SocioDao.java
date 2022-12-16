@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Socio;
-import tools.ConexionJPA;
+import entidades.Socio;
+import herramientas.ConexionJPA;
 
 public class SocioDao {
 
@@ -34,7 +34,7 @@ public class SocioDao {
 	}
 
 	public List<Socio> getSociosPorNombre(String socio) {
-		EntityManager em = tools.ConexionJPA.getEntityManager();
+		EntityManager em = herramientas.ConexionJPA.getEntityManager();
 		TypedQuery<Socio> consulta = (TypedQuery<Socio>) em.createNamedQuery("Socio.sociosPorNombre", Socio.class);
 		List<Socio> listaSociosPorNombre = consulta.getResultList();
 		return listaSociosPorNombre;
@@ -42,7 +42,7 @@ public class SocioDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Socio> getListaSocios(){
-		EntityManager em = tools.ConexionJPA.getEntityManager();
+		EntityManager em = herramientas.ConexionJPA.getEntityManager();
 		TypedQuery<Socio> consulta = (TypedQuery<Socio>)em.createNamedQuery("Socio.findAll");
 		List<Socio> listaSocios = consulta.getResultList();
 		

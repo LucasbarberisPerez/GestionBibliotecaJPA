@@ -27,7 +27,7 @@
 	<main>
 		<div
 			class="container-sm w-50 border border-dark border-5 rounded-3 p-4 mt-5">
-			<form action="${pageContext.request.contextPath}/AdminController?operacion=insertarAutor" method="POST" class="text-center">
+			<form action="${pageContext.request.contextPath}/ControladorAdministrador?operacion=insertarAutor" method="POST" class="text-center">
 				<div class="row">
 					<div class="col-sm-12 text-center">
 						<h1>

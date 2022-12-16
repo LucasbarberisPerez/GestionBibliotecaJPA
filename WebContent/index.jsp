@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Inicio</title>
+<title>Index</title>
 </head>
 <body>
 		<% response.sendRedirect("home.jsp");%>
-	
 </body>
 </html>
