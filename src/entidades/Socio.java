@@ -136,4 +136,14 @@ public class Socio implements Serializable {
 		this.sociopenalizado = sociopenalizado;
 	}
 
+	@Override
+	public String toString() {
+		return "Socio [idsocio=" + idsocio + ", direccion=" + direccion + ", email=" + email + ", nombre=" + nombre
+				+ ", version=" + version + ", devoluciones=" + devoluciones + ", prestamos=" + prestamos
+				+ ", sociopenalizado=" + sociopenalizado + "]";
+	}
+	
+	
+	
+
 }

@@ -9,7 +9,10 @@ import herramientas.ConexionJPA;
 import herramientas.Ordenar;
 
 public class AutorDao {
-
+	/*
+	 * Los metodos de esta clase estan limpios, las excepciones se lanzarán en momento de ejecucion.
+	 */
+	
 	public static void insertarAutor(Autor a) {
 		if (a != null) {
 			EntityManager em = ConexionJPA.getEntityManager();

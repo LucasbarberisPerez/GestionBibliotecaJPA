@@ -2,10 +2,13 @@ package controlladores.operaciones;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.tagext.TryCatchFinally;
+
+import com.sun.codemodel.JTryBlock;
+
 import dao.AutorDao;
 import dao.SocioDao;
 import entidades.Autor;
@@ -20,23 +23,20 @@ public class OperacionesAdministrador {
 		if (operacion != null) {
 			switch (operacion) {
 			case "listarAutores":
-				System.out.println("Aquí entra bro");
-				// Listamos los autores con la funcion especificada en la entidad autor.
+				// TODO Paginar la tabla en 5 filas por petición
 				ArrayList<Autor> listaAutores = AutorDao.obtenerListaAutores();
 				request.setAttribute("listaAutores", listaAutores);
-				request.getRequestDispatcher("/admin/listaautores.jsp").forward(request, response);
+				request.getRequestDispatcher("/admin/autor/listaautores.jsp").forward(request, response);
 				break;
 
 			case "listarSocio":
-				String nomSocio = request.getParameter("nombre-autor");
+				String nombreSocio = request.getParameter("nombre-autor");
 				// Listar todos los socios en el front
-				if (nomSocio != null) {
-					SocioDao sd = new SocioDao();
-					List<Socio> listaSocios = sd.getSociosPorNombre(null);
+				if (nombreSocio != null) {
+					ArrayList<Socio> listaSocios = SocioDao.getSociosPorNombre(nombreSocio);
 					request.setAttribute("listaSocios", listaSocios);
-					request.getRequestDispatcher("/autores.jsp").forward(request, response);
 				}
-
+				request.getRequestDispatcher("/admin/autor/listaaautores.jsp").forward(request, response);
 				break;
 
 			}
@@ -50,7 +50,6 @@ public class OperacionesAdministrador {
 		String mensaje = null;
 
 		if (operacion != null) {
-
 			switch (operacion) {
 
 			case "insertarAutor":
@@ -70,10 +69,33 @@ public class OperacionesAdministrador {
 				} catch (Exception e) {
 					mensaje = "Error al insertar el autor.";
 					request.setAttribute("mensajeError", mensaje);
+				} finally {
+					request.getRequestDispatcher("/admin/autor/altaautor.jsp").forward(request, response);
 				}
+				
+			break;
+				
+				
+			case "altaSocio":
+				
+				try {
+					String nombreSocio = request.getParameter("nombre-socio");
+					String direccionSocio = request.getParameter("direccion-socio");
+					String emailSocio = request.getParameter("email-socio");
+					Socio s = new Socio();
+					s.setNombre(nombreSocio);
+					s.setDireccion(direccionSocio);
+					s.setEmail(emailSocio);	
+					SocioDao.insertarSocio(s);
 
-				request.getRequestDispatcher("/admin/altaautor.jsp").forward(request, response);
-				break;
+				} catch (Exception e) {
+					mensaje = "Error al insertar el socio.";
+					request.setAttribute("mensajeError", mensaje);
+				} finally {
+					request.getRequestDispatcher("/admin/autor/altasocio.jsp").forward(request, response);
+				}
+				
+			break;
 
 			}
 		}

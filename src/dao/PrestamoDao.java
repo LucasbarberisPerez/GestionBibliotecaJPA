@@ -1,8 +1,4 @@
 package dao;
-
-import java.sql.Date;
-import java.time.LocalDate;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 

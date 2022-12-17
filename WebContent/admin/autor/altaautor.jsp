@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title</title>
+<title>Alta de autor</title>
 <!-- Required meta tags -->
 <meta charset="utf-8" />
 <meta name="viewport"
