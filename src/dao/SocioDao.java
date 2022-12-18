@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import entidades.Autor;
 import entidades.Socio;
 import herramientas.ConexionJPA;
 
@@ -19,15 +20,16 @@ public class SocioDao {
 			tx.begin();
 			em.persist(s);
 			tx.commit();
-			em.close();
 		}
 	}
 
-	public static ArrayList<Socio> getSociosPorNombre(String socio) {
+	public static ArrayList<Socio> getSociosPorNombre(String nombreSocio) {
 		EntityManager em = herramientas.ConexionJPA.getEntityManager();
 		TypedQuery<Socio> consulta = (TypedQuery<Socio>) em.createNamedQuery("Socio.sociosPorNombre", Socio.class);
-		List<Socio> listaSociosPorNombre = consulta.getResultList();
-		return (ArrayList<Socio>) listaSociosPorNombre;
+		consulta.setParameter("nombresocio", nombreSocio);
+		List<Socio> lista = (List<Socio>)consulta.getResultList();
+		ArrayList<Socio> listaSocios = new ArrayList<Socio>(lista);
+		return listaSocios;
 	}
 
 	public static Socio buscarSocioPorId(long idsocio) {

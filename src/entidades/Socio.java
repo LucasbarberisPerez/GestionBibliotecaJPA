@@ -10,13 +10,13 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Socio.findAll", query="SELECT s FROM Socio s order by s.nombre")
+@NamedQuery(name="Socio.findAll", query="SELECT s FROM Socio s")
 @NamedQuery(name ="Socio.sociosPorNombre", query = "select s from Socio s where UPPER(s.nombre) LIKE UPPER(:nombresocio)")
 public class Socio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SOCIO_IDSOCIO_GENERATOR", sequenceName="S_SOCIO")
+	@SequenceGenerator(name="SOCIO_IDSOCIO_GENERATOR", sequenceName="S_SOCIO", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SOCIO_IDSOCIO_GENERATOR")
 	private long idsocio;
 

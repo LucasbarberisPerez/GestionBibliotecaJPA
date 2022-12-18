@@ -1,17 +1,33 @@
 package test;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+
 import dao.SocioDao;
 import entidades.Socio;
+import herramientas.ConexionJPA;
 
 public class Main {
 
 	public static void main(String[] args) {
-		long id = 5;
-		Socio s;
-		s = SocioDao.buscarSocioPorId(id);
+		
+		/*
+		 * //buscar lista de socios por nombre:
+		String nombre = "socio 1";
+		EntityManager em = ConexionJPA.getEntityManager();
+		List<Socio> listaSocios = em.createNamedQuery("Socio.sociosPorNombre", Socio.class).setParameter("nombresocio", nombre).getResultList();
+
+		System.out.println(listaSocios);
+		 * */
+		
+	
 		
 		
-		System.out.println(s.toString());
 	}
 
 }

@@ -29,14 +29,16 @@ public class OperacionesAdministrador {
 				request.getRequestDispatcher("/admin/autor/listaautores.jsp").forward(request, response);
 				break;
 
-			case "listarSocio":
-				String nombreSocio = request.getParameter("nombre-autor");
+			case "listarSociosPorNombre":
+				System.out.println("entra en listarSociosPorNombre");
+				String nombreSocio = request.getParameter("nombre-socio");
+				System.out.println(nombreSocio);
 				// Listar todos los socios en el front
 				if (nombreSocio != null) {
 					ArrayList<Socio> listaSocios = SocioDao.getSociosPorNombre(nombreSocio);
 					request.setAttribute("listaSocios", listaSocios);
 				}
-				request.getRequestDispatcher("/admin/autor/listaaautores.jsp").forward(request, response);
+				request.getRequestDispatcher("/admin/socio/modificarsocio.jsp").forward(request, response);
 				break;
 
 			}
@@ -77,7 +79,7 @@ public class OperacionesAdministrador {
 				
 				
 			case "altaSocio":
-				
+					System.out.println("aqui entra");
 				try {
 					String nombreSocio = request.getParameter("nombre-socio");
 					String direccionSocio = request.getParameter("direccion-socio");
@@ -92,7 +94,7 @@ public class OperacionesAdministrador {
 					mensaje = "Error al insertar el socio.";
 					request.setAttribute("mensajeError", mensaje);
 				} finally {
-					request.getRequestDispatcher("/admin/autor/altasocio.jsp").forward(request, response);
+					request.getRequestDispatcher("/admin/socio/altasocio.jsp").forward(request, response);
 				}
 				
 			break;
