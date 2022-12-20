@@ -24,12 +24,17 @@
     <div class="container-sm w-50 border border-dark border-5 rounded-3 p-4 mt-5">
         <form action="${pageContext.request.contextPath}/ControladorAdministrador?operacion=altaSocio" method="post" class="text-center">
         	<!-- TODO: realizar mensajes de error o exito -->
-        <c:choose>
-        	<c:when test="${exito != null }">
-        	</c:when>
-        	<c:otherwise>
-        	</c:otherwise>
-        </c:choose>
+       					<c:if test="${mensajeExito != null}">
+							<span class="badge bg-secondary">
+								${mensajeExito}
+							</span>
+						</c:if>
+						
+						<c:if test="${mensajeError != null}">
+							<span class="badge bg-danger">
+								${mensajeError}
+							</span>
+						</c:if>
         
           <div class="row">
             <div class="col-sm-12 text-center">

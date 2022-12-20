@@ -1,4 +1,4 @@
-package controlladores;
+package controladores;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controlladores.operaciones.OperacionesAdministrador;
+import controladores.operaciones.OperacionesAdministrador;
 
 @WebServlet("/ControladorAdministrador")
 public class ControladorAdministrador extends HttpServlet {

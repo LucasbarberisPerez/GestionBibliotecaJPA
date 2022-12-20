@@ -35,6 +35,11 @@
             </div>
           </div>
           <div class="row">
+       		<c:if test="${listaSocios != null && listaSocios.size() == 0 }">
+							<span class="badge bg-danger">
+								No hay coincidencias con la búsqueda realizada.
+							</span>
+			</c:if>
             <div class="col-sm-12">
               <div class="form-group">
               <input type="hidden" name="operacion" value="listarSociosPorNombre"/>
@@ -55,7 +60,7 @@
           </div>
         </form>
     </div>
-	<c:if test="${listaSocios != null }">
+	<c:if test="${listaSocios != null && listaSocios.size() > 0 }">
 	    <div class="container  border border-dark border-5 rounded-3 p-4 mt-5">
 	      <h1>Modificar socio</h1>
 	      <h3 class="mt-2">Lista de socios encontrados</h3>
@@ -74,7 +79,7 @@
 		            <th scope="row">${socio.idsocio}</th>
 		            <td>${socio.nombre}</td>
 		            <td>${socio.direccion}</td>
-		            <td><a href="" class="btn btn-dark">Editar</a></td>
+		            <td><a href="${pageContext.request.contextPath}/ControladorAdministrador?operacion=editarSocio&socioid=${socio.idsocio}" class="btn btn-dark">Editar</a></td>
 		          </tr>
 	          </c:forEach>
 	        </tbody>
