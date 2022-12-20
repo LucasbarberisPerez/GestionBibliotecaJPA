@@ -10,7 +10,7 @@ import herramientas.Fechas;
 
 public class PrestamoDao {
 	
-	public void insertarPrestamo(long idejemplar, long idsocio) {
+	public static void insertarPrestamo(long idejemplar, long idsocio) {
 		//TODO: insertar el prestamo teniendo en cuenta que el socio y el ejemplar existan
 		//tener en cuenta que tambien no puede tener 2 prestamos con el mismo ejemplar.
 		EntityManager em = ConexionJPA.getEntityManager();

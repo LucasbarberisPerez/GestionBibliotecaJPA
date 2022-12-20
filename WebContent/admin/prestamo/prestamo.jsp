@@ -23,7 +23,7 @@
   <main>
         <div class="container border border-2 border-dark w-50 p-3 d-flex flex-column justify-content-center align-items-center">
             <h1 class="text-center">Guardar prestamos</h1>
-            <form action="">
+            <form action="${pageContext.request.contextPath}/ControladorAdministrador?operacion=guardarPrestamo" method="post">
                 <div class="d-flex flex-column gap-2 text-center ">
                     <span>Código de socio:</span>
                     <input type="text" name="codigoSocio" class="text-center">
@@ -31,7 +31,7 @@
                 
                 <div class="d-flex flex-column text-center">
                     <span>Código de ejemplar:</span>
-                    <input type="text" name="codigoLibro" class="text-center">
+                    <input type="text" name="codigoEjemplar" class="text-center">
                 </div>
                 
                 <div class="d-flex justify-content-center gap-1">

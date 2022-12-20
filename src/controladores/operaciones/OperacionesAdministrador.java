@@ -10,6 +10,7 @@ import javax.servlet.jsp.tagext.TryCatchFinally;
 import com.sun.codemodel.JTryBlock;
 
 import dao.AutorDao;
+import dao.PrestamoDao;
 import dao.SocioDao;
 import entidades.Autor;
 import entidades.Socio;
@@ -40,19 +41,18 @@ public class OperacionesAdministrador {
 				break;
 			case "editarSocio":
 				System.out.println("se inicia editar socio.");
-				
-					try {
-						long idSocio = Long.parseLong(request.getParameter("socioid"));
-						System.out.println(idSocio);
-						Socio s = SocioDao.buscarSocioPorId(idSocio);
-						
-						request.setAttribute("socioEditar", s);
-						request.getRequestDispatcher("/admin/socio/editorsocio.jsp").forward(request, response);
-					} catch (Exception e) {
-						request.setAttribute("mensajeError", "No se ha podido acceder a la edición del socio.");
-						request.getRequestDispatcher("/admin/socio/modificarsocio.jsp").forward(request, response);
-					}
-					
+
+				try {
+					long idSocio = Long.parseLong(request.getParameter("socioid"));
+					System.out.println(idSocio);
+					Socio s = SocioDao.buscarSocioPorId(idSocio);
+
+					request.setAttribute("socioEditar", s);
+					request.getRequestDispatcher("/admin/socio/editorsocio.jsp").forward(request, response);
+				} catch (Exception e) {
+					request.setAttribute("mensajeError", "No se ha podido acceder a la edición del socio.");
+					request.getRequestDispatcher("/admin/socio/modificarsocio.jsp").forward(request, response);
+				}
 
 				break;
 
@@ -116,6 +116,21 @@ public class OperacionesAdministrador {
 				break;
 
 			case "aplicarCambiosSocio":
+				break;
+
+			case "guardarPrestamo":
+				System.out.println("Entra en guardar prestamo.");
+				try {
+					long codigoSocio = Long.parseLong(request.getParameter("codigoSocio"));
+					long codigoEjemplar = Long.parseLong(request.getParameter("codigoEjemplar"));
+					PrestamoDao.insertarPrestamo(codigoEjemplar, codigoSocio);
+					System.out.println("exito en la inserción");
+				} catch (Exception e){
+					 mensaje = "Error al insertar el prestamo.";
+					request.setAttribute("mensajeError", mensaje);
+				}finally {
+					request.getRequestDispatcher("/admin/prestamo/prestamo.jsp");
+				}
 				break;
 			}
 		}
