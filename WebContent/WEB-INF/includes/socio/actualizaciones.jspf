@@ -1,0 +1,10 @@
+<c:if test="${mensajes.size > 0}">
+	<c:forEach items="${mensajes}" var="mensaje">
+		<span class="badge bg-secondary"> ${mensaje} </span>
+	</c:forEach>
+</c:if>
+
+<c:if test="${mensajeError != null }">
+	<span class="badge bg-danger"> ${mensajeError} </span>
+</c:if>
+

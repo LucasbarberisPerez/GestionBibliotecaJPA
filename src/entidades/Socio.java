@@ -2,6 +2,9 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import herramientas.Formatear;
+
 import java.util.List;
 
 
@@ -43,6 +46,17 @@ public class Socio implements Serializable {
 
 	public Socio() {
 	}
+	
+	
+
+	public Socio(long idsocio, String direccion, String email, String nombre) {
+		this.idsocio = idsocio;
+		this.direccion = Formatear.mayuscula(direccion);
+		this.email = Formatear.mayuscula(email);
+		this.nombre = Formatear.mayuscula(nombre);
+	}
+
+
 
 	public long getIdsocio() {
 		return this.idsocio;

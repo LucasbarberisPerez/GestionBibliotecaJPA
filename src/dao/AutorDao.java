@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
 import entidades.Autor;
+import entidades.Socio;
 import herramientas.ConexionJPA;
 import herramientas.Ordenar;
 
@@ -24,7 +28,7 @@ public class AutorDao {
 		}
 	}
 
-	public static ArrayList<Autor> obtenerListaAutores() {
+	public static ArrayList<Autor> listaAutores() {
 		EntityManager em = ConexionJPA.getEntityManager();
 		List<Autor> lista = em.createNamedQuery("Autor.findAll", Autor.class).getResultList();
 		ArrayList<Autor> listaAutores = new ArrayList<Autor>(lista);
@@ -32,6 +36,31 @@ public class AutorDao {
 		em.close();
 		return listaAutores;
 		
+	}
+	
+	
+	public static ArrayList<Autor> listaAutoresPaginado(int inicio, int registrosTotales) {
+		EntityManager em = ConexionJPA.getEntityManager();
+		TypedQuery<Autor> query = em.createNamedQuery("Autor.findAll",Autor.class);
+        query.setFirstResult(inicio);
+        query.setMaxResults(registrosTotales);
+		List<Autor> lista = (List<Autor>)query.getResultList();
+		ArrayList<Autor> listaAutores = new ArrayList<Autor>(lista);
+		
+		
+		listaAutores = Ordenar.ordernarListaAutoresPorId(listaAutores);
+		em.close();
+		return listaAutores;
+		
+	}
+	
+	public static long totalAutores() {
+		EntityManager em = ConexionJPA.getEntityManager();
+		Query query = em.createNamedQuery("Autor.countAll",Autor.class);
+		long totalAutores = (long)query.getSingleResult();
+		em.close();
+		return totalAutores;
+	
 	}
 
 }

@@ -37,12 +37,12 @@
                       >Nuevo socio</a
                     >
                   </li>
-                  <li><a class="dropdown-item" href="#">Listado socio</a></li>
+                  <li><a class="dropdown-item" href="#">Lista de socios</a></li>
                   <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/socio/modificarsocio.jsp">Modificar socio</a></li>
                   <li><a class="dropdown-item" href="#">Eliminar socio</a></li>
-                  <li><a class="dropdown-item" href="#">Modificar socio</a></li>
+                  
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">Socios morosos</a></li>
+                  <li><a class="dropdown-item" href="#">Socios penalizados</a></li>
                 </ul>
               </li>
 
@@ -66,7 +66,7 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/autor/listaautores.jsp">Listado de autores</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/ControladorAdministrador?operacion=listarAutores">Listado de autores</a>
                   </li>
                 </ul>
               </li>

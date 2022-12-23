@@ -19,13 +19,13 @@ public class ControladorAdministrador extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		OperacionesAdministrador.operacionGet(request, response);
+		OperacionesAdministrador.operacionesDoGet(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		OperacionesAdministrador.operacionPost(request, response);
+		OperacionesAdministrador.operacionesDoPost(request, response);
 	}
 
 	

@@ -1,0 +1,49 @@
+<div class="container">
+			<c:choose>
+				<c:when test="${listaAutores != null}">
+					<h1 class="mt-2">Lista de autores</h1>
+					<span class="badge bg-dark w-10 fs-5">Registros encontrados: ${totalRegistros}</span>
+					<table class="table mt-4 text-center table-striped">
+						<thead class=" table-dark">
+							<tr>
+								<th scope="col"># id</th>
+								<th scope="col">Nombre del autor</th>
+								<th scope="col">Fecha de nacimiento</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${listaAutores}" var="autor">
+								<tr>
+									<th scope="row">${autor.idautor}</th>
+									<td>${autor.nombre}</td>
+									<td>${autor.fechanacimiento}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+					<div class="text-center d-flex w-100 justify-content-center gap-2">
+						<c:if test="${pagina != 0 }">
+							<a
+								href="${pageContext.request.contextPath}/ControladorAdministrador?operacion=listarAutores&pag=${pagina-1}"
+								class="btn btn-dark fs-5 w-10 h-100"><i
+								class="fa-solid fa-arrow-left"></i></a>
+						</c:if>
+
+						<span class="badge bg-dark w-10 fs-5">Pagina ${pagina+1} de
+							${paginasTotales+1}</span>
+						<c:if test="${pagina != paginasTotales}">
+							<a
+								href="${pageContext.request.contextPath}/ControladorAdministrador?operacion=listarAutores&pag=${pagina+1}"
+								class="btn btn-dark fs-5 w-10 h-100"><i
+								class="fa-solid fa-arrow-right"></i></a>
+						</c:if>
+					</div>
+				</c:when>
+
+				<c:when test="${error != null}">
+					<h1 class="mt-2 alert alert-danger">Error al obtener lista de
+						autores.</h1>
+				</c:when>
+			</c:choose>
+		</div>

@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class Formatear {
 
-	public static Date formatoSqlDate(String fecha) {
+	public static Date sqlDate(String fecha) {
 		return java.sql.Date.valueOf(fecha);
 	}
 
-	public static String toMayuscula(String str) {
+	public static String mayuscula(String str) {
 		String strFormateado = str.toUpperCase();
 		return strFormateado;
 	}

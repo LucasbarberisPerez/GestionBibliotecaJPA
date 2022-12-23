@@ -13,6 +13,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Autor.findAll", query="SELECT a FROM Autor a ORDER BY a.idautor ASC")
+@NamedQuery(name="Autor.countAll", query="SELECT COUNT(a) FROM Autor a")
 public class Autor implements Serializable {
 	private static final long serialVersionUID = 1L;
 

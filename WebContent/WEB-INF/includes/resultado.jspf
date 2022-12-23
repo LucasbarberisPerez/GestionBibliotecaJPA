@@ -1,0 +1,7 @@
+<c:if test="${mensajeExito != null}">
+	<span class="badge bg-secondary"> ${mensajeExito} </span>
+</c:if>
+
+<c:if test="${mensajeError != null}">
+	<span class="badge bg-danger"> ${mensajeError} </span>
+</c:if>

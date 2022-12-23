@@ -8,7 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import dao.AutorDao;
 import dao.SocioDao;
+import entidades.Autor;
 import entidades.Socio;
 import herramientas.ConexionJPA;
 
@@ -16,17 +18,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		/*
-		 * //buscar lista de socios por nombre:
-		String nombre = "socio 1";
-		EntityManager em = ConexionJPA.getEntityManager();
-		List<Socio> listaSocios = em.createNamedQuery("Socio.sociosPorNombre", Socio.class).setParameter("nombresocio", nombre).getResultList();
-
-		System.out.println(listaSocios);
-		 * */
+		ArrayList<Autor> lista = AutorDao.listaAutoresPaginado(5, 5); // sacar el registro de la posicion 6 y saca el 6 y el 7.
 		
 	
-		
+		for (Autor autor : lista) {
+			System.out.println(autor.getNombre());
+		}
+		System.out.println("Tamaño: "+lista.size());
 		
 	}
 
